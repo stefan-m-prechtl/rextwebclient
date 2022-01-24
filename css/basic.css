@@ -1,0 +1,105 @@
+/* ================================================================
+  Stylesheet für allgemeine "Basis"-Einstellungen 
+  ============================================================== */
+
+/* "Verhalten" der Kästchen von Default umstellen auf Borderbox */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+/* Sanftes Scrollen innerhalb einer Seite */
+html {
+   scroll-behavior: smooth;
+}
+
+/* "Collapsing-Margins" unterbinden */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote {
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+      Grundlegende Schrift-/Textgestaltung
+  ----------------------------------------------------------*/
+
+/* für Browser mit 16pX Defaultgröße: 1rem = 1o pixel */
+html {
+   font-size: 62.5%;
+}
+
+body {
+   font-size: 1.6rem;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 300;
+}
+
+/* Überschriften */
+
+h1 {
+   font-size: 2.6rem;
+}
+
+h2 {
+   font-size: 2.2rem;
+}
+
+h3 {
+   font-size: 2rem;
+}
+
+h4 {
+   font-size: 1.75rem;
+}
+
+h5 {
+   font-size: 1.5rem;
+}
+
+h6 {
+   font-size: 1rem;
+   font-variant: small-caps;
+}
+
+/* Bilder */
+figcaption {
+   font-size: 1.2rem;
+}
+
+/* Tabellen */
+table {
+   margin-top: 15px;
+   border-collapse: collapse;
+}
+th {
+   padding: 6px;
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: lightgrey;
+   border: 1px solid grey;
+}
+
+td {
+   border: 1px solid lightgrey;
+   padding: 6px;
+}
+
+tr:hover {
+   background-color: #ddd;
+}
+
+/* Allgemein */
+.hideDiv {
+   display: none;
+}

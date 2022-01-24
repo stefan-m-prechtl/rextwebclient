@@ -1,0 +1,207 @@
+/* ================================================================
+  Stylesheet für allgemeine Responsive-Layout auf Grid-Basis
+  ============================================================== */
+
+/* Handy */
+@media screen and (max-width: 39.938em) {
+   body {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto;
+      min-height: 100vh;
+   }
+   .site-header {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+   }
+   .site-nav {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+   }
+   .site-content {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 3;
+      grid-row-end: 4;
+   }
+   .site-aside {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 4;
+      grid-row-end: 5;
+   }
+   .site-footer {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 5;
+      grid-row-end: 6;
+   }
+   /* Navigation - Handy */
+   #nav_button {
+      cursor: pointer;
+      background: inherit;
+      color: white;
+      border: 0;
+      padding-left: 10px;
+   }
+   .site-nav ul {
+      display: none;
+      padding: 0;
+      margin: 0;
+   }
+   .site-nav a {
+      display: block;
+      padding-left: 1rem;
+   }
+   .site-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+   }
+   #footer-nav ul {
+      display: block !important;
+      padding: 0;
+      margin: 0;
+   }
+   #footer-nav li {
+      display: inline;
+   }
+   #footer-nav a {
+      display: inline;
+      padding: 1rem;
+   }
+}
+
+/* Tablet */
+@media screen and (min-width: 40em) and (max-width: 63.938em) {
+   body {
+      display: grid;
+      grid-template-columns: 6.5fr 3.5fr;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 100vh;
+   }
+   body {
+      display: grid;
+      grid-template-columns: 6.5fr 3.5fr;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 100vh;
+   }
+   .site-header {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+   }
+   .site-nav {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+   }
+   .site-content {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 3;
+      grid-row-end: 4;
+   }
+   .site-aside {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
+   }
+   .site-footer {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 4;
+      grid-row-end: 5;
+   }
+   /* Navigation - Tablet */
+   #nav_button {
+      display: none !important;
+   }
+   .site-nav ul {
+      display: block !important;
+      padding: 0;
+      margin: 0;
+   }
+   .site-nav li {
+      display: inline;
+   }
+   .site-nav a {
+      display: inline;
+      padding: 1rem;
+   }
+   /* Kontakt, Impressum ausblenden - im Hauptmenü sichtbar */
+   #footer-nav {
+      display: none;
+   }
+}
+
+/* Desktop */
+@media screen and (min-width: 64em) {
+   body {
+      display: grid;
+      grid-template-columns: 1fr 6fr 2fr;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+   }
+   .site-header {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 1;
+      grid-row-end: 2;
+   }
+   .site-nav {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+   }
+   .site-content {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+   }
+   .site-aside {
+      grid-column-start: 3;
+      grid-column-end: 4;
+      grid-row-start: 2;
+      grid-row-end: 3;
+   }
+   .site-footer {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 3;
+      grid-row-end: 4;
+   }
+   /* Navigation - Desktop */
+   #nav_button {
+      display: none !important;
+   }
+   .site-nav ul {
+      display: block !important;
+      padding: 0;
+      margin: 0;
+   }
+   .site-nav a {
+      display: block;
+      padding-left: 1rem;
+   }
+   /* Kontakt, Impressum ausblenden - im Hauptmenü sichtbar */
+   #footer-nav {
+      display: none;
+   }
+}
+
+/* Desktop  - sehr breit*/
+@media screen and (min-width: 90em) {
+   body {
+      /* Links und rechts einrücken */
+      margin: 0 10rem;
+   }
+}

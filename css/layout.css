@@ -1,0 +1,52 @@
+/* ================================================================
+  Stylesheet für allgemeines Layout
+  ============================================================== */
+
+/* Farben, Abstände */
+:root {
+   --BodyBackgroundColor: darkgrey;
+   --BodyColor: black;
+   --HeaderBackgroundColor: #b3d9ff;
+   --HeaderColor: #004080;
+   --NavBackgroundColor: #80bfff;
+   --NavColor: #005580;
+   --ContentBackgroundColor: white;
+   --AsideBackgroundColor: ghostwhite;
+   --FooterBackgroundColor: grey;
+}
+
+body {
+   background-color: var(--BodyBackgroundColor);
+   color: var(--BodyColor);
+   margin: 0rem auto;
+}
+
+.site-header {
+   background-color: var(--HeaderBackgroundColor);
+   color: var(--HeaderColor);
+   padding-left: 10px;
+   padding-top: 10px;
+   padding-bottom: 12px;
+}
+
+.site-nav {
+   background-color: var(--NavBackgroundColor);
+   color: var(--NavColor);
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+}
+
+.site-content {
+   background-color: var(--ContentBackgroundColor);
+   padding: 1rem;
+}
+
+.site-aside {
+   background-color: var(--AsideBackgroundColor);
+   padding: 1rem;
+}
+
+.site-footer {
+   background-color: var(--FooterBackgroundColor);
+   padding: 10px 5px;
+}
