@@ -4,7 +4,7 @@ import { html, render } from './node_modules/lit-html/lit-html.js'
 export default class ProjectView {
 
     /**
-       *Konstruktor
+       * Konstruktor
        * @param {string} idRootElement Selektor für DOM-Element, das für den View als Root-Element verwendet wird
        */
     constructor(idRootElement) {
@@ -29,20 +29,37 @@ export default class ProjectView {
         return this.rootElement.querySelector(selector);
     }
 
-
     template = (projects) => html`
-      <table class=treeinfo">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Beschreibung</th>
-        </tr>
-        ${projects.map(project => html`<tr>
-        <td><button data-id="${project.projectid}">Lade ${project.projectid}</button></td>
-        <td>${project.projectname}</td>
-        <td>${project.description}</td>
-        </tr>`)}
-  </table>`;
+        <table class=treeinfo">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Beschreibung</th>
+            </tr>
+            ${projects.map(project => html`<tr>
+            <td><button data-id="${project.projectid}">Lade ${project.projectid}</button></td>
+            <td>${project.projectname}</td>
+            <td>${project.description}</td>
+            </tr>`)}
+        </table>
+        <button @click=${() => this.presenter.loadProjects()} id="btnReload">Reload</button>`;
+
+    templateEdit = (project) => html`
+        <form action="#" id="editProjectForm">
+            <div>
+                <label for="nameProjekt">Name</label>
+                <input type="text" id="nameProject" name="nameProject" value=${project.projectname} required>
+            </div>
+            <div>
+                <label for="descProjekt">Beschreibung</label>
+                <input type="text" id="descProject" name="descProject" value=${project.description} required>
+            </div>
+            <div>
+                <button id="submit" type="submit">Übernehmen</button>
+            </div>
+        </form>
+    `
+
 
 
     /**
@@ -52,9 +69,7 @@ export default class ProjectView {
 
         const btnLoad = this.$("#btnLoad");
 
-        btnLoad.on("click", () => {
-            this.presenter.loadProjects();
-        });
+        btnLoad.on("click", () => { this.presenter.loadProjects(); });
     }
 
 
@@ -63,7 +78,10 @@ export default class ProjectView {
      * @param {*} projects 
      */
     showProjects(projects) {
-        let div = $("#placeholderProjects");
-        render(this.template(projects), div);
+        let divListe = $("#placeholderProjects");
+        render(this.template(projects), divListe);
+
+        let divEdit = $("#editProject");
+        render(this.templateEdit(projects[0]), divEdit);
     }
 }

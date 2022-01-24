@@ -13,6 +13,8 @@ export default class ProjectPresenter {
 
     async loadProjects() {
 
+        console.log("Lade Projekte vom Server....");
+
         // Daten per REST-API laden
         let jsonData = await this.loadProjectFromServer();
 

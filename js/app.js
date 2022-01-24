@@ -73,11 +73,18 @@ const initContent = (pages) => {
     initContentMain(pages)
 }
 
+const initMVP = () => {
+    let projectPresenter = new ProjectPresenter(new ProjectView("#viewProject"), new ProjectModel());
+}
+
 const main = async () => {
     initContent(pages);
     initNavigation();
     await includeTemplates();
+    // initMVP muss mit Verzögerung aufgerufen werden!
+    setTimeout(initMVP, 500);
 };
+
 
 
 // "Main"-Funktion aufrufen
@@ -85,20 +92,7 @@ const main = async () => {
 document.addEventListener('DOMContentLoaded', main);
 
 
-let projectPresenter = undefined;
 
-document.addEventListener("pageChanged", (event) => {
-    let pageName = event.detail.data;
-    console.log(pageName);
-
-    if (pageName === 'project') {
-        if (projectPresenter === undefined) {
-            projectPresenter = new ProjectPresenter(new ProjectView("#viewProject"), new ProjectModel());
-        }
-    }
-
-
-});
 
 
 
