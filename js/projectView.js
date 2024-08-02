@@ -29,38 +29,11 @@ export default class ProjectView {
         return this.rootElement.querySelector(selector);
     }
 
-    template = (projects) => html`
-        <table class=treeinfo">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Beschreibung</th>
-            </tr>
-            ${projects.map(project => html`<tr>
-            <td><button data-id="${project.projectid}">Lade ${project.projectid}</button></td>
-            <td>${project.projectname}</td>
-            <td>${project.description}</td>
-            </tr>`)}
-        </table>
-        <button @click=${() => this.presenter.loadProjects()} id="btnReload">Reload</button>`;
-
-    templateEdit = (project) => html`
-        <form action="#" id="editProjectForm">
-            <div>
-                <label for="nameProjekt">Name</label>
-                <input type="text" id="nameProject" name="nameProject" value=${project.projectname} required>
-            </div>
-            <div>
-                <label for="descProjekt">Beschreibung</label>
-                <input type="text" id="descProject" name="descProject" value=${project.description} required>
-            </div>
-            <div>
-                <button id="submit" type="submit">Übernehmen</button>
-            </div>
-        </form>
-    `
-
-
+    templateListProject = (projects) => html`
+         <ul class="w3-ul w3-border w3-hoverable">
+         <li><h3>Projekte</h3></li>
+            ${projects.map(project => html`<li datat-id=${project.id}>${project.name}</li>`)}
+        </ul>`;
 
     /**
      * Alle Events für diesen Views definieren
@@ -68,7 +41,6 @@ export default class ProjectView {
     initEventhandler() {
 
         const btnLoad = this.$("#btnLoad");
-
         btnLoad.on("click", () => { this.presenter.loadProjects(); });
     }
 
@@ -79,9 +51,6 @@ export default class ProjectView {
      */
     showProjects(projects) {
         let divListe = $("#placeholderProjects");
-        render(this.template(projects), divListe);
-
-        let divEdit = $("#editProject");
-        render(this.templateEdit(projects[0]), divEdit);
+        render(this.templateListProject(projects), divListe);
     }
 }

@@ -28,7 +28,8 @@ export default class ProjectPresenter {
      */
     async loadProjectFromServer() {
         try {
-            let response = await fetch(`http://localhost:8080/monolith/rext/projectmgmt/projects`);
+            //let response = await fetch(`http://localhost:8080/monolith/rext/projectmgmt/projects`);
+            let response = await fetch('testdata/projectdata.json')
             let result = await response.json();
             return result;
         }
