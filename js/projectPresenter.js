@@ -1,7 +1,8 @@
+import Project from "./project.js";
 export default class ProjectPresenter {
     /**
      * Konstruktor
-     * @param {PRojectView} view
+     * @param {ProjectView} view
      * @param {ProjectModel} model
      */
     constructor(view, model) {
@@ -16,6 +17,12 @@ export default class ProjectPresenter {
 
         // Daten per REST-API laden
         let jsonData = await this.loadProjectFromServer();
+
+        jsonData.map(jsonproject => {
+            let project = new Project(jsonproject);
+            console.log(project.name);
+        })
+
 
         // View aktualisieren
         this.view.showProjects(jsonData);
