@@ -6,12 +6,14 @@ import ProjectModel from "./projectModel.js";
 
 // Liste mit 'Tupel' für "Seiten": Seiten-Id und Seiten-Name (wird in Navigation angezeigt)
 let pages = [];
-pages.push(["login", "Login", "dialog"]);
+// Alle Views
 pages.push(["start", "Start", "view"]);
 pages.push(["project", "Projekte", "view"]);
 pages.push(["items", "Items", "view"]);
 pages.push(["admin", "Administration", "view"]);
 pages.push(["help", "Hilfe", "view"]);
+// Alle Dialoge
+pages.push(["login", "Login", "dialog"]);
 
 const includeTemplates = async () => {
   let divElems = document.querySelectorAll("[include-html]");
@@ -56,24 +58,30 @@ const initContentMain = (pages) => {
     let elemPageDiv;
     let id = page[0];
 
-    // erste Seite sichtbar machen!
-    if (page === pages[0])
-      elemPageDiv = createElement("div", { id: id, class: "virtualpage" });
-    else
-      elemPageDiv = createElement("div", {
-        id: id,
-        class: "virtualpage hideDiv",
-      });
-
-      let includeValue ='';
-    if (page[2]=='view')  
-        includeValue = "./includes/" + id + "_template_main.html";
-    else
-        includeValue = "./includes/" + id + "_template_dialog.html";
-    
-    let elemIncludeDiv = createElement("div", { "include-html": includeValue });
+    let isView = (page[2]=='view')
+    // ersten View sichtbar machen!
+   if (isView)  
+    {
+      if (page === pages[0])
+        elemPageDiv = createElement("div", { id: id, class: "virtualpage" });
+      else
+        elemPageDiv = createElement("div", {
+          id: id,
+          class: "virtualpage hideDiv",
+        });
+        let includeValue = "./includes/" + id + "_template_main.html";
+        let elemIncludeDiv = createElement("div", { "include-html": includeValue });
     elemPageDiv.appendChild(elemIncludeDiv);
     elemMain.append(elemPageDiv);
+    }    
+    else
+    {
+      let includeValue = "./includes/" + id + "_template_dialog.html";
+      let elemIncludeDiv = createElement("div", { "include-html": includeValue });
+      elemPageDiv = createElement("div", { id: id});
+      elemPageDiv.appendChild(elemIncludeDiv);
+      elemMain.append(elemPageDiv);
+    }
   });
 };
 
@@ -89,12 +97,17 @@ const initMVP = () => {
   );
 };
 
+const showLogin = () => {
+  document.getElementById('dialogLogin').style.display='block';
+};
+
 const main = async () => {
   initContent(pages);
   initNavigation();
   await includeTemplates();
   // initMVP muss mit Verzögerung aufgerufen werden!
   setTimeout(initMVP, 500);
+  setTimeout(showLogin, 550);
 };
 
 // "Main"-Funktion aufrufen

@@ -44,7 +44,6 @@ export default class ProjectView {
         btnLoad.on("click", () => { this.presenter.loadProjects(); });
     }
 
-
     /**
      * Methode wird vom Presenter aktiviert
      * @param {*} projects 

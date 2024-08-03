@@ -48,8 +48,6 @@ function handleNavClick(e) {
 
 function showPage(pageName) {
 
-
-
     let virtualPages = $$(".virtualpage");
     virtualPages.forEach(page => page.classList.add('hideDiv'));
 

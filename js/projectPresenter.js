@@ -1,9 +1,9 @@
 export default class ProjectPresenter {
     /**
-   * Konstruktor
-   * @param {PRojectView} view 
-   * @param {ProjectModel} model 
-   */
+     * Konstruktor
+     * @param {PRojectView} view
+     * @param {ProjectModel} model
+     */
     constructor(view, model) {
         this.view = view;
         this.view.setPresenter(this);
@@ -12,7 +12,6 @@ export default class ProjectPresenter {
     }
 
     async loadProjects() {
-
         console.log("Lade Projekte vom Server....");
 
         // Daten per REST-API laden
@@ -29,11 +28,10 @@ export default class ProjectPresenter {
     async loadProjectFromServer() {
         try {
             //let response = await fetch(`http://localhost:8080/monolith/rext/projectmgmt/projects`);
-            let response = await fetch('testdata/projectdata.json')
+            let response = await fetch("testdata/projectdata.json");
             let result = await response.json();
             return result;
-        }
-        catch (err) {
+        } catch (err) {
             console.log(`Fehler:${err}`);
         }
     }
